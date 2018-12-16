@@ -13,7 +13,7 @@ class Solution:
         length = len(nums)-1
         nums.sort()
 
-        for i in range(length-1):
+        for i in range(length-2):
             if i > 0 and nums[i] == nums[i-1]:
                 continue
             # print(i)
