@@ -1,29 +1,32 @@
-class Solution(object):
+# 1st item index: i; 2nd item index: j; 3rd item index: k; 4th item index: h;
+
+class Solution:    
     def fourSum(self, nums, target):
-        nums.sort()     # sort the array first
         result = []
-        for i in range(len(nums) - 3):      # the first index must less than list length minus 4
-            if i > 0 and nums[i] == nums[i-1]:
+        nums.sort()
+        length = len(nums)-1
+        for i in range(length-2):
+            if i > 0 and nums[i] == nums[i-1]:          # if 1st index is duplicate, continue
                 continue
-            j = i + 1                       # initialize the second index based on first index
-            while j <= len(nums) - 3:
-                k = j + 1                   # initialize the third index based on second index
-                r = len(nums) - 1           # initialize the 4th index to rear
-                while k < r:
-                    temp = nums[i] + nums[j] + nums[k] + nums[r]
-                    if temp == target:
-                        result.append([nums[i], nums[j], nums[k], nums[r]])
-                        while nums[k] == nums[k+1]:
+            for j in range(i+1, length-1):
+                if j > i+1 and nums[j] == nums[j-1]:    # if 2nd index is duplicate, continue
+                    continue
+                k = j+1
+                h = length
+                while k < h:                            # while 3rd index is smaller than the 4th index
+                    curr = nums[i] + nums[j] + nums[k] + nums[h]
+                    if curr == target:
+                        result.append([nums[i], nums[j], nums[k], nums[h]])
+                        while k < h and nums[k] == nums[k+1]:
                             k += 1
-                        while nums[r] == nums[r-1]:
-                            r -= 1
+                        while k < h and nums[h] == nums[h-1]:
+                            h -= 1
                         k += 1
-                        r -= 1
-                    elif temp < target:
-                        k += 1
+                        h -= 1
+                    elif curr > target:
+                        h -= 1
                     else:
-                        r -= 1
-                j += 1
+                        k += 1
         return result
 
 
