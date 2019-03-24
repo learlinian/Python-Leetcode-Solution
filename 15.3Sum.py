@@ -11,22 +11,20 @@ class Solution:
         """
         solution = []
         length = len(nums)-1
-        nums.sort()
+        nums.sort()                             # sort the array to save time complexity
 
-        for i in range(length-2):
-            if i > 0 and nums[i] == nums[i-1]:
+        for i in range(length-1):
+            if i > 0 and nums[i] == nums[i-1]:  # when i's index is greater than 0 and their values are equal, jump it to avoid repetition
                 continue
-            # print(i)
             j = i+1
             k = length
             while j < k:
                 temp = nums[i] + nums[j] + nums[k]
                 if not temp:
                     solution.append([nums[i], nums[j], nums[k]])
-                    # print('i = ' + str(i) + ' j = ' + str(j) + ' k = ' + str(k))
-                    while nums[j] == nums[j+1] and j < k:
+                    while j < k and nums[j] == nums[j+1]:
                         j += 1
-                    while nums[k] == nums[k-1] and j < k:
+                    while j < k and nums[k] == nums[k-1]:
                         k -= 1
                     j += 1
                     k -= 1
