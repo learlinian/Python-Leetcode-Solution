@@ -9,6 +9,9 @@ class Solution(object):
                 records.append([words[i][j], words[i+1][j]])
                 break
 
+        if not records:
+            return False
+
         for record in records:
             if order.index(record[0]) > order.index(record[1]):
                 return False
