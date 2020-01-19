@@ -1,4 +1,5 @@
-"""Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
+"""
+Merge k sorted linked lists and return it as one sorted list. Analyze and describe its complexity.
 Example:
 Input:
 [
@@ -12,14 +13,17 @@ Output: 1->1->2->3->4->4->5->6
 
 # Solution 1
 class Solution1(object):
-    def mergeKLists1(self, lists):
-        """
-        :type lists: List[ListNode]
-        :rtype: ListNode
-        """
+    def mergeKLists(self, lists):
+        # filter out empty element in lists
+        for i in range(len(lists) - 1, -1, -1):
+            if not lists[i]:
+                del lists[i]
+        if not lists:
+            return ListNode(0).next
+
         v_map = {}
         for element in lists:
-            while element is not None:
+            while element:
                 # Append node to dictionary if its key already exists. Otherwise create a key
                 try:
                     v_map[element.val].append(element)
@@ -45,7 +49,12 @@ class Solution1(object):
 
 # Solution 2
 class Solution2(object):
-    def mergeKLists2(self, lists):
+    def mergeKLists(self, lists):
+        for i in range(len(lists) - 1, -1, -1):
+            if not lists[i]:
+                del lists[i]
+        if not lists:
+            return ListNode(0).next
         x = []
         while lists:
             minVal = min([lists[i].val for i in range(len(lists))])     # get the min value for each 3 nodes
@@ -68,7 +77,7 @@ class Solution2(object):
         return x[0]
 
 
-class linked_list:
+class ListNode:
     def __init__(self, x):
         self.val = x
         self.next = None
@@ -77,16 +86,17 @@ class linked_list:
         self.next = next_list
 
 
-x1 = linked_list(1)
-x2 = linked_list(4)
-x3 = linked_list(5)
+if __name__ == '__main__':
+    x1 = ListNode(1)
+    x2 = ListNode(4)
+    x3 = ListNode(5)
 
-x4 = linked_list(1)
-x5 = linked_list(3)
-x6 = linked_list(4)
+    x4 = ListNode(1)
+    x5 = ListNode(3)
+    x6 = ListNode(4)
 
-x7 = linked_list(2)
-x8 = linked_list(6)
+    x7 = ListNode(2)
+    x8 = ListNode(6)
 
 x1.next_list(x2)
 x2.next_list(x3)
@@ -99,8 +109,8 @@ x7.next_list(x8)
 val = [x1, x4, x7]
 y = Solution2()
 
-result = y.mergeKLists2(val)
+result = y.mergeKLists(val)
 
-while result is not None:
-    print(result.val)
-    result = result.next
+# while result is not None:
+#     print(result.val)
+#     result = result.next
