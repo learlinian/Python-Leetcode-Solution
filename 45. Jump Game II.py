@@ -15,6 +15,23 @@
 #         return steps[-1]
 
 
+"""still not good enough"""
+# class Solution(object):
+#     def jump(self, nums):
+#         nums_len = len(nums)
+#         if nums_len == 0:
+#             return 0
+#
+#         steps = [-1] * nums_len
+#         steps[0] = 0
+#
+#         for i in range(1, nums_len):
+#             for j in range(i, min(i+nums[i-1], nums_len)):
+#                 if steps[j] == -1:
+#                     steps[j] = steps[i-1] + 1
+#         return steps[-1]
+
+
 """
 h is head which means possible slowest method
 t is tail which means possible farthest position
