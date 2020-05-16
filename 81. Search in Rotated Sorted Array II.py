@@ -1,6 +1,6 @@
 class Solution(object):
     def search(self, nums, target):
-        print(nums)
+        # print(nums)   # print current list in iteration
         nums_len = len(nums)
         if nums_len == 0:
             return False
@@ -22,6 +22,5 @@ class Solution(object):
 
 if __name__ == '__main__':
     array = [4, 5, 6, 7, 0, 1, 2]
-    # target = 6
     for target in [4, 5, 6, 7, 0, 1, 2, 10]:
         print(Solution().search(array, target))
