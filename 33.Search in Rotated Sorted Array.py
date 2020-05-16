@@ -1,6 +1,6 @@
 class Solution(object):
     def search(self, nums, target):
-        print(nums)
+        # print(nums)   # print out current list during iterations
         nums_len = len(nums)
         if nums_len == 0:
             return -1
@@ -12,7 +12,6 @@ class Solution(object):
         elif target < nums[mid]:    # target is smaller, need to find a larger value
             if mid < nums_len - 1 and (nums[mid] > nums[mid+1] or nums[mid+1] > nums[-1]):
                 result = self.search(nums[mid+1:].copy(), target)
-                print("result: ", result)
                 if result != -1:
                     return result + mid + 1
             return self.search(nums[:mid].copy(), target)
