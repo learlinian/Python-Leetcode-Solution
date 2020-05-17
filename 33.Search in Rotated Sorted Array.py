@@ -10,13 +10,13 @@ class Solution(object):
         elif nums_len == 1:
             return -1 if target != nums[0] else 0
         elif target < nums[mid]:    # target is smaller, need to find a larger value
-            if mid < nums_len - 1 and (nums[mid] > nums[mid+1] or nums[mid+1] > nums[-1]):
+            if mid < nums_len - 1 and nums[mid] >= nums[-1]:
                 result = self.search(nums[mid+1:].copy(), target)
                 if result != -1:
                     return result + mid + 1
             return self.search(nums[:mid].copy(), target)
         else:  # target is larger
-            if mid > 0 and (nums[mid-1] > nums[mid] or nums[0] > nums[mid]):
+            if mid > 0 and nums[0] >= nums[mid]:
                 result = self.search(nums[:mid].copy(), target)
                 if result != -1:
                     return result
