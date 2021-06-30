@@ -2,7 +2,7 @@ import heapq
 
 
 class Solution1:
-    def meeting_room(self, intervals):
+    def minMeetingRooms(self, intervals):
         intervals.sort()
         rooms = 0
         meeting = []
@@ -20,7 +20,7 @@ class Solution1:
 
 
 class Solution2:
-    def meeting_room(self, intervals):
+    def minMeetingRooms(self, intervals):
         meeting_num = len(intervals)
         rooms = 0
 
