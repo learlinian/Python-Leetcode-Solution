@@ -1,3 +1,5 @@
+# run time: 41%, memory: 20%
+
 class Solution(object):
     def maxSubArrayLen(self, nums, k):
         length = len(nums)
