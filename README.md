@@ -5,4 +5,4 @@ For C++ Leetcode solutions, please visit my [git repo](https://github.com/learli
 
 For more Leetcode solution resources, please visit [My Website](https://www.nianliblog.com/projects/leetcode)!
 
-Feel free to visit my [Youtube Channel](https://www.youtube.com/channel/UCEJ1lT9sc9zw-tRean6z68Q?sub_confirmation=1) for more information!
+For other free courses and inspiring tutorials, please visit my [Youtube Channel](https://www.youtube.com/channel/UCEJ1lT9sc9zw-tRean6z68Q?sub_confirmation=1)!
