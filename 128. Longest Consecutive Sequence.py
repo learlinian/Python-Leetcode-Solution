@@ -1,34 +1,23 @@
+# runtime: 65%; memory: 95%
+# solution: sort and find the consecutive numbers. Time complexity: O(nlogn). Space complexity: O(1)
 class Solution(object):
     def longestConsecutive(self, nums):
         if not nums:
             return 0
-        results = {}
-        visited = {}
-
-        for num in nums:
-            print(results)
-            delete = False
-            if visited.get(num) is None:
-                if results.get(num+1):
-                    results[num] = results[num+1] + 1
-                    results[num+results[num+1]] = results[num]
-                    if results[num+1] > 2:
-                        del results[num+1]
-                else:
-                    results[num] = 1
-                if results.get(num-1):
-                    if results[num - 1] > 1:
-                        delete = True
-                    update_val = results[num - results[num - 1]] + results[num]
-                    results[num - results[num - 1]] = update_val
-                    results[num + results[num] - 1] = update_val
-                    if delete:
-                        del results[num-1]
-                    del results[num]
-                visited[num] = True
-        print(results)
-        return max(results.values())
+        nums.sort()
+        last_v = 10 ** 9
+        ans = 1
+        current_len = 1
+        for i in range(len(nums)):
+            if nums[i] == last_v + 1:
+                current_len += 1
+            elif nums[i] != last_v:
+                current_len = 1
+            ans = max(ans, current_len)
+            last_v = nums[i]
+        return ans
 
 
-nums = [1,3,5,2,4]
-print(Solution().longestConsecutive(nums))
+if __name__ == '__main__':
+    nums = [1, 3, 5, 2, 4]
+    print(Solution().longestConsecutive(nums))
